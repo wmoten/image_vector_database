@@ -50,7 +50,33 @@ export function create3DScene(THREE, imagesData, OrbitControls) {
             renderer.render(scene, camera); // Add this line to re-render the scene
         });
     });
+    window.addEventListener('mousemove', (event) => {
+        event.preventDefault();
+        const raycaster = new THREE.Raycaster();
+        const mouse = new THREE.Vector2();
 
+        mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+        mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+        raycaster.setFromCamera(mouse, camera);
+
+        const intersects = raycaster.intersectObjects(scene.children, true);
+
+        scene.traverse((child) => {
+            if (child.isSprite) {
+                child.scale.set(1, 1, 1);
+            }
+        });
+
+        if (intersects.length > 0) {
+            const sprite = intersects[0].object;
+            if (sprite.isSprite) {
+                sprite.scale.set(1.2, 1.2, 1.2);
+            }
+        }
+
+        renderer.render(scene, camera);
+    });
     function animate() {
         requestAnimationFrame(animate);
 
