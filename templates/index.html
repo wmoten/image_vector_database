@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Similarity</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Image Similarity</h1>
+    </header>
+    <main>
+        <form action="/" method="POST" enctype="multipart/form-data">
+            <div style="display: inline-flex; justify-content: center; align-items: center; margin-bottom: 20px;">
+                <label for="texture" style="margin-right: 10px;">Texture:</label>
+                <input type="text" id="texture" name="texture" style="margin-right: 10px;">
+                <label for="iterations" style="margin-left: 20px;">Generate Number of Textures:</label>
+                <span id="iterations-value">1</span>
+                <input type="range" id="iterations" name="iterations" min="1" max="10" value="1" style="margin-left: 10px;">
+                <label for="art-style">Art Style:</label>
+                <select id="art-style" name="art_style" style="margin-right: 10px;">
+                    <option value="realistic">Realistic</option>
+                    <option value="stylized">Stylized</option>
+                </select>
+                <button type="submit">Generate Textures</button>
+            </div>
+            <div>
+                <button class="find-similar-btn" type="submit">Find Similar Images</button>
+                <button type="button" id="img-graph">View Image Graph</button>
+            </div>
+            {% if not_cached_images %}
+            <div class="image-container">
+                <h2>Not Cached(Warning: long loading times)</h2>
+                <div id="image-gallery">
+                    {% for img_path in not_cached_images %}
+                        <label>
+                            <input type="checkbox" name="selected_image" value="{{ img_path }}">
+                            <img src="{{ url_for('static', filename=img_path) }}" class="thumbnail bevel">
+                        </label>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+            <div id="image-gallery">
+                {% for img_path in image_files %}
+                    <label>
+                        <input type="checkbox" name="selected_image" value="{{ img_path }}">
+                        <img src="{{ url_for('static', filename=img_path) }}" class="thumbnail bevel">
+                    </label>
+                {% endfor %}
+            </div>
+        </form>
+        <button type="button" id="delete-button">Delete Selected Images</button>
+    </main>
+    <footer>
+        <p>Chat GPT made this for me lol</p>
+    </footer>
+    <div id="loading-screen" class="hidden">
+        <span>Loading<span class="ellipsis">...</span></span>
+    </div>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+</html>

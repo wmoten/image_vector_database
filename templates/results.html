@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Similarity Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Similar Images</h1>
+    </header>
+    <div class="form-container">
+        <a href="{{ url_for('index') }}" class="back-btn">Back to Image Selection</a>
+    </div>
+    <div id="image-gallery">
+        {% for result in results %}
+            <label>
+                <img src="{{ result.image_path }}" class="thumbnail bevel">
+            </label>
+        {% endfor %}
+    </div>
+    <footer>
+        <p>&copy; 2023 My Image Gallery. All rights reserved.</p>
+    </footer>
+</body>
+</html>
