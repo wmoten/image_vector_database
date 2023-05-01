@@ -1,4 +1,4 @@
-export function createRoundedTexture(texture, cornerRadius, outlineColor = null, removeOutline = false) {
+export function createRoundedTexture(texture, cornerRadius) {
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
 
@@ -7,14 +7,6 @@ export function createRoundedTexture(texture, cornerRadius, outlineColor = null,
 
     // Draw the original image
     ctx.drawImage(texture.image, 0, 0);
-
-    if (!removeOutline && outlineColor) {
-        console.log('Drawing outline with color:', outlineColor);
-        // Draw the outline
-        ctx.strokeStyle = outlineColor;
-        ctx.lineWidth = 20;
-        ctx.strokeRect(0, 0, canvas.width, canvas.height);
-    }
 
     // Create a rounded rectangle mask
     ctx.globalCompositeOperation = 'destination-in';
@@ -39,14 +31,6 @@ export function createRoundedTexture(texture, cornerRadius, outlineColor = null,
     return roundedTexture;
 }
 
-
-export function updateSpriteTexture(sprite, newTexture) {
-    sprite.material.dispose(); // Dispose the old material
-    const material = new THREE.SpriteMaterial({ map: newTexture });
-    sprite.material = material; // Assign the new material
-}
-
-
 export async function fetchSimilarImages(selectedImagePath) {
     const response = await fetch('/find_similar_images', {
       method: 'POST',
@@ -57,5 +41,4 @@ export async function fetchSimilarImages(selectedImagePath) {
     });
     const similarImages = await response.json();
     return similarImages;
-  }
-  
+}
