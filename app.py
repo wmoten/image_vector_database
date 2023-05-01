@@ -39,7 +39,6 @@ def index():
             texture = request.form['texture']
             slider_value = request.form['iterations']
             art_style = request.form['art_style']
-            print(art_style)
             generate_texture(texture, iterations=slider_value, style=art_style)
 
     found_in_cache, not_found_in_cache = utils.compare_cache_and_files(utils.get_files_sorted_by_date())

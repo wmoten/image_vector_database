@@ -2,16 +2,17 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f7f7f7;
+    background-color: #222222;
+    color: #f7f7f7;
 }
 
 h1 {
-    background-color: #ffffff;
+    background-color: #2e2e2e;
     margin: 0;
     padding: 20px;
     text-align: center;
     font-size: 24px;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid #444444;
 }
 
 #image-gallery {
@@ -21,26 +22,22 @@ h1 {
     padding: 20px;
 }
 
-label {
-    cursor: pointer;
-    display: inline-block;
-    margin: 5px;
-    position: relative;
+.image-container {
+    padding: 20px;
+    margin: 20px;
+    background-color: #2e2e2e;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    border-radius: 4px;
 }
 
-input[type="checkbox"] {
-    display: none;
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
 }
 
-.thumbnail {
-    border: 3px solid transparent;
-    height: 150px;
-    object-fit: cover;
-    width: 150px;
-}
-
-input[type="checkbox"]:checked + .thumbnail {
-    border-color: #007bff;
+.find-similar-btn {
+    align-self: flex-start;
 }
 
 button {
@@ -55,21 +52,26 @@ button {
     box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
-.form-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+input[type="checkbox"] {
+    display: none;
 }
 
-.form-input {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
+input[type="checkbox"]:checked + .thumbnail {
+    border-color: #007bff;
 }
 
-.form-input label {
-    margin-right: 10px;
+button:hover {
+    background-color: #0056b3;
+}
+
+.back-button {
+    background-color: #2e2e2e;
+    border: 1px solid #f7f7f7;
+    color: #f7f7f7;
+}
+
+.back-button:hover {
+    background-color: #444444;
 }
 
 .form-input input {
@@ -204,28 +206,6 @@ html {
 
 *, *:before, *:after {
     box-sizing: inherit;
-}
-
-body {
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f7f7f7;
-}
-
-header {
-    background-color: #fff;
-    padding: 20px 0;
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
-}
-
-footer {
-    background-color: #fff;
-    padding: 20px 0;
-    text-align: center;
-    box-shadow: 0 -4px 6px rgba(50, 50, 93, 0.11), 0 -1px 3px rgba(0, 0, 0, 0.08);
-    margin-top: 40px;
 }
 
 footer p {

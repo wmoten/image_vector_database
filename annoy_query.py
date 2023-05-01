@@ -9,7 +9,6 @@ from torchvision import transforms
 from efficientnet_pytorch import EfficientNet
 from annoy import AnnoyIndex
 from sklearn.decomposition import PCA
-
 from sklearn.manifold import TSNE
 
 def reduce_features_tSNE(feature_vectors, n_components=3):
@@ -23,7 +22,7 @@ def process_existing_features(method='tSNE', n_components=3):
         image_features = json.load(f)
 
     # Extract feature vectors from the loaded data
-    feature_vectors = [item["vector"] for item in image_features]
+    feature_vectors = np.array([item["vector"] for item in image_features])
 
     # Perform dimensionality reduction of the feature vectors
     if method == 'PCA':
@@ -91,7 +90,7 @@ def process_images(image_folder="static/images", use_cache=True):
         # Load cached image features
         with open(constants.CACHE_PATH, 'r') as f:
             image_features = json.load(f)
-    process_existing_features()
+
     return image_features
 
 

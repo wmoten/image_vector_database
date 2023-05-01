@@ -35,7 +35,7 @@ export function create3DScene(THREE, imagesData, OrbitControls) {
     imagesData.forEach((data) => {
         const imgPath = data.path;
         const position = data.vector;
-        const mult = .85;
+        const mult = .5;
 
         const textureLoader = new THREE.TextureLoader();
         textureLoader.load(imgPath, (texture) => {
