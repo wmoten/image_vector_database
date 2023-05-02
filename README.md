@@ -1,3 +1,7 @@
+# Click Gif to watch Video Demo
+[![Video Thumbnail](./static/screenshot.gif)](https://www.youtube.com/watch?v=agl0IDa27D8)
+
+
 ## Annoy and Pre-trained Model Usage
 
 This project leverages Annoy (Approximate Nearest Neighbors Oh Yeah) and a pre-trained EfficientNet-B2 model to calculate image similarity efficiently. The pre-trained model is used for feature extraction, converting the images into feature vectors that represent their high-level visual characteristics. These feature vectors serve as input for Annoy, which then builds an approximate nearest neighbors index to enable efficient similarity-based searches.
